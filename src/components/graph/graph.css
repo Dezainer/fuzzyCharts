@@ -13,3 +13,8 @@
 	width: 68%;
 	height: 100%;
 }
+.preview .block {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

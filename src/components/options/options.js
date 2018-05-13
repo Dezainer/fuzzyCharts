@@ -17,7 +17,10 @@ export default class Options extends React.Component {
 		return (
 			<div className="wrapper options">
 				<div className="block">
-					{ this.getOptions() }
+					<h1 className="title">Funções</h1>
+					<div className="list">
+						{ this.getOptions() }
+					</div>
 				</div>
 			</div>
 		)
