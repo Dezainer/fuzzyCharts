@@ -8,7 +8,8 @@ module.exports = {
 		modules: [
 			'node_modules',
 			path.resolve(__dirname, 'src/components'),
-			path.resolve(__dirname, 'src/helpers')
+			path.resolve(__dirname, 'src/helpers'),
+			path.resolve(__dirname, 'src/data')
 		],
 		extensions: ['.js', '.css']
 	},

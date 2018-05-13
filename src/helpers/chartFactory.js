@@ -1,8 +1,9 @@
 export default function makeChart(data) {
 	let chart = { type: 'line', data: {} }
 
-	chart.data.datasets = data.map(set => makeSet(set))
-	chart.data.labels = orderPoints(data)
+	chart.data.datasets = data.data.map(set => makeSet(set))
+	chart.data.labels = orderPoints(data.data)
+	chart.options = data.options
 	
 	return chart
 }
