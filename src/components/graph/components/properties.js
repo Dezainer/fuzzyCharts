@@ -1,5 +1,4 @@
 import React from 'react'
-import './properties.css'
 
 export default class Properties extends React.Component {
 	render() {

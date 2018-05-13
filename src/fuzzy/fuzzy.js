@@ -1,8 +1,7 @@
 import React from 'react'
 import './fuzzy.css'
 
-import ChartView from 'chartView/chartView'
-import Properties from 'properties/properties'
+import Graph from 'graph/graph'
 import Options from 'options/options'
 
 export default class Fuzzy extends React.Component {
@@ -10,13 +9,8 @@ export default class Fuzzy extends React.Component {
 		return (
 			<main>
 				<div className="container">
-					<div className="current">
-						<Properties/>
-						<ChartView/>
-					</div>
-					<div className="all">
-						<Options/>
-					</div>
+					<Graph/>
+					<Options/>
 				</div>
 			</main>
 		)
