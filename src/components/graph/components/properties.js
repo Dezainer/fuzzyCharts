@@ -1,6 +1,28 @@
 import React from 'react'
+import Input from 'input/input'
+import * as FunctionService from 'functionService'
 
 export default class Properties extends React.Component {
+
+	handleNameChange(func, name) {
+		let { selected } = this.props,
+			updatedFunc = FunctionService.updateName(func, name)
+
+		this.props.updateFunction(selected, updatedFunc)
+	}
+
+	getInputs(func) {
+		return (
+			<div>
+				<Input
+					name="label"
+					placeholder="Nome"
+					value={ func }
+					onChange={ name => this.handleNameChange(func, name) }
+				/>
+			</div>
+		)
+	}
 
 	getContent() {
 		return this.props.graph.length == 0
@@ -9,11 +31,7 @@ export default class Properties extends React.Component {
 					Escolha uma função e solte aqui para constuir o gráfico
 				</h4>
 			)
-			: (
-				<h1 className="title">
-					{ this.props.graph[this.props.selected].label }
-				</h1>
-			)
+			: this.getInputs(this.props.graph[this.props.selected])
 	}
 
 	render() {

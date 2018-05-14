@@ -31,6 +31,13 @@ export default class Graph extends React.Component {
 		this.setState({ selected })
 	}
 
+	updateFunction(i, func) {
+		let { graph } = this.state,
+			updatedGraph = GraphService.updateFunction(graph, i, func)
+
+		this.setState({ graph: updatedGraph })
+	}
+
 	render() {
 		return (
 			<div 
@@ -40,6 +47,7 @@ export default class Graph extends React.Component {
 			>
 				<Properties
 					{ ...this.state }
+					updateFunction={ (i, func) => this.updateFunction(i, func) }
 				/>
 				<Preview 
 					data={ this.state.graph }
