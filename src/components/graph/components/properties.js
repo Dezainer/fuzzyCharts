@@ -11,7 +11,21 @@ export default class Properties extends React.Component {
 		this.props.updateFunction(selected, updatedFunc)
 	}
 
-	getForm(func) {
+	handlePointXChange(func, i, value) {
+		let { selected } = this.props,
+			updateFunc = FunctionService.updatePointX(func, i, value)
+
+		this.props.updateFunction(selected, updateFunc)
+	}
+
+	handlePointYChange(func, i, value) {
+		let { selected } = this.props,
+			updateFunc = FunctionService.updatePointY(func, i, value)
+
+		this.props.updateFunction(selected, updateFunc)
+	}
+
+	getProperties(func) {
 		return (
 			<div>
 				<h1 className="title">Propriedades</h1>
@@ -21,8 +35,31 @@ export default class Properties extends React.Component {
 					value={ func }
 					onChange={ name => this.handleNameChange(func, name) }
 				/>
+				<h2 className="subtitle">Pontos</h2>
+				{ this.getPoints(func) }
 			</div>
 		)
+	}
+
+	getPoints(func) {
+		return func.points.map((point, i) => (
+			<div className="point" key={ i }>
+				<Input
+					name="x"
+					type="number"
+					placeholder="Valor X"
+					value={ point }
+					onChange={ value => this.handlePointXChange(func, i, value) }
+				/>
+				<Input
+					name="y"
+					type="number"
+					placeholder="Valor Y"
+					value={ point }
+					onChange={ value => this.handlePointYChange(func, i, value) }
+				/>
+			</div>
+		))
 	}
 
 	getContent() {
@@ -32,7 +69,7 @@ export default class Properties extends React.Component {
 					Escolha uma função e solte aqui para constuir o gráfico
 				</h4>
 			)
-			: this.getForm(this.props.graph[this.props.selected])
+			: this.getProperties(this.props.graph[this.props.selected])
 	}
 
 	render() {

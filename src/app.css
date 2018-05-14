@@ -30,6 +30,10 @@
 	font-size: 1.2em;
 	color: white;
 }
+.subtitle {
+	font-size: 1.1em;
+	color: white;
+}
 .label {
 	font-size: 1em;
 	color: rgba(255,255,255,0.2);
