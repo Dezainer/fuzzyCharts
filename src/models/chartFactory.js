@@ -25,7 +25,7 @@ function formatPoints(points) {
 }
 
 function formatPoint(point) {
-	return parseInt(point) || 0
+	return parseFloat(point) || 0
 }
 
 function orderPoints(data) {

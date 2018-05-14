@@ -5,18 +5,18 @@ import * as FunctionService from 'functionService'
 export default class Properties extends React.Component {
 
 	handleNameChange(func, name) {
-		updatedFunc = FunctionService.updateName(func, name)
+		let updatedFunc = FunctionService.updateName(func, name)
 		this.props.updateFunction(this.props.selected, updatedFunc)
 	}
 
 	handlePointXChange(func, i, value) {
-		updatedFunc = FunctionService.updatePointX(func, i, value)
-		this.props.updateFunction(this.props.selected, updateFunc)
+		let updatedFunc = FunctionService.updatePointX(func, i, value)
+		this.props.updateFunction(this.props.selected, updatedFunc)
 	}
 
 	handlePointYChange(func, i, value) {
-		updatedFunc = FunctionService.updatePointY(func, i, value)
-		this.props.updateFunction(this.props.selected, updateFunc)
+		let updatedFunc = FunctionService.updatePointY(func, i, value)
+		this.props.updateFunction(this.props.selected, updatedFunc)
 	}
 
 	handleRemove() {
@@ -85,10 +85,12 @@ export default class Properties extends React.Component {
 	render() {
 		return (
 			<div className="wrapper properties">
-				<div className={`block ${ 
-					this.props.selected == -1 ? 'centered' : '' 
-				}`}>
-					{ this.getContent() }
+				<div className="scrollable">
+					<div className={`block ${ 
+						this.props.selected == -1 ? 'centered' : '' 
+					}`}>
+						{ this.getContent() }
+					</div>
 				</div>
 			</div>
 		)
