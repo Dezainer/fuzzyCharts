@@ -36,6 +36,10 @@ export default class Properties extends React.Component {
 					onChange={ name => this.handleNameChange(func, name) }
 				/>
 				<h2 className="subtitle">Pontos</h2>
+				<div className="point">
+					<h4 className="label">Valor X</h4>
+					<h4 className="label">Valor Y</h4>
+				</div>
 				{ this.getPoints(func) }
 			</div>
 		)

@@ -11,6 +11,11 @@
 .properties .point {
 	display: flex;
 }
+.properties .label {
+	width: 100%;
+	text-align: left;
+	margin-top: 10px;
+}
 
 .preview {
 	width: 68%;

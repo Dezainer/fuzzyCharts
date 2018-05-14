@@ -7,3 +7,7 @@ export function getStoredData() {
 export function storeData(data) {
 	localStorage.setItem(name, JSON.stringify(data))
 }
+
+export function deleteData() {
+	localStorage.removeItem(name)
+}

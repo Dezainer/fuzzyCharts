@@ -5,21 +5,8 @@ import Properties from './components/properties'
 import Preview from './components/preview'
 
 import * as GraphService from 'graphService'
-import * as StorageService from 'storageService'
 
 export default class Graph extends React.Component {
-
-	componentWillMount() {
-		let graph = StorageService.getStoredData() || [],
-			selected = graph.length - 1
-
-		this.setState({ graph, selected })
-	}
-
-	componentDidUpdate() {
-		let { graph } = this.state
-		StorageService.storeData(graph)
-	}
 
 	allowDrop(e) {
 		e.preventDefault()
@@ -28,25 +15,25 @@ export default class Graph extends React.Component {
 	handleDrop(e) {
 		e.preventDefault()
 
-		let { graph } = this.state,
+		let { graph } = this.props,
 			func = JSON.parse(e.dataTransfer.getData('function')),
 			updatedGraph = GraphService.addFunction(graph, func)
 
-		this.setState({ 
+		this.props.setState({ 
 			graph: updatedGraph,
 			selected: graph.length
 		})
 	}
 
 	handleLegendClick(selected) {
-		this.setState({ selected })
+		this.props.setState({ selected })
 	}
 
 	updateFunction(i, func) {
-		let { graph } = this.state,
+		let { graph } = this.props,
 			updatedGraph = GraphService.updateFunction(graph, i, func)
 
-		this.setState({ graph: updatedGraph })
+		this.props.setState({ graph: updatedGraph })
 	}
 
 	render() {
@@ -57,11 +44,11 @@ export default class Graph extends React.Component {
 				onDrop={ e => this.handleDrop(e) }
 			>
 				<Properties
-					{ ...this.state }
+					{ ...this.props }
 					updateFunction={ (i, func) => this.updateFunction(i, func) }
 				/>
 				<Preview 
-					data={ this.state.graph }
+					data={ this.props.graph }
 					onClick={ i => this.handleLegendClick(i) }
 				/>
 			</div>
