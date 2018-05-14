@@ -11,9 +11,10 @@ export default class Properties extends React.Component {
 		this.props.updateFunction(selected, updatedFunc)
 	}
 
-	getInputs(func) {
+	getForm(func) {
 		return (
 			<div>
+				<h1 className="title">Propriedades</h1>
 				<Input
 					name="label"
 					placeholder="Nome"
@@ -31,7 +32,7 @@ export default class Properties extends React.Component {
 					Escolha uma função e solte aqui para constuir o gráfico
 				</h4>
 			)
-			: this.getInputs(this.props.graph[this.props.selected])
+			: this.getForm(this.props.graph[this.props.selected])
 	}
 
 	render() {

@@ -1,0 +1,33 @@
+.input {
+	position: relative;
+}
+
+.border {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 1px;
+	background: white;
+	opacity: 0.2;
+	transition: all 0.2s ease-in-out;
+}
+
+input {
+	padding: 15px 20px;
+	background: none;
+	outline: none;
+	border: none;
+	font-size: 1em;
+	color: white;
+	opacity: 0.2;
+	transition: all 0.2s ease-in-out;
+}
+input:focus {
+	opacity: 1;
+}
+input:focus + .border {
+	width: 100%;
+	opacity: 1;
+}
