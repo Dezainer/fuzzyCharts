@@ -5,10 +5,21 @@ import Properties from './components/properties'
 import Preview from './components/preview'
 
 import * as GraphService from 'graphService'
+import * as StorageService from 'storageService'
 
 export default class Graph extends React.Component {
 
-	state = { graph: [] }
+	componentWillMount() {
+		let graph = StorageService.getStoredData() || [],
+			selected = graph.length - 1
+
+		this.setState({ graph, selected })
+	}
+
+	componentDidUpdate() {
+		let { graph } = this.state
+		StorageService.storeData(graph)
+	}
 
 	allowDrop(e) {
 		e.preventDefault()

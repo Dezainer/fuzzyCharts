@@ -76,7 +76,7 @@ export default class Properties extends React.Component {
 		return (
 			<div className="wrapper properties">
 				<div className={`block ${ 
-					this.props.selected == null ? 'centered' : '' 
+					this.props.selected == -1 ? 'centered' : '' 
 				}`}>
 					{ this.getContent() }
 				</div>
