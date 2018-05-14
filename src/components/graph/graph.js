@@ -15,8 +15,12 @@ export default class Graph extends React.Component {
 	handleDrop(e) {
 		e.preventDefault()
 
+		let func = JSON.parse(e.dataTransfer.getData('function'))
+		this.addFunction(func)
+	}
+
+	addFunction(func) {
 		let { graph } = this.props,
-			func = JSON.parse(e.dataTransfer.getData('function')),
 			updatedGraph = GraphService.addFunction(graph, func)
 
 		this.props.setState({ 
@@ -25,15 +29,23 @@ export default class Graph extends React.Component {
 		})
 	}
 
-	handleLegendClick(selected) {
-		this.props.setState({ selected })
-	}
-
 	updateFunction(i, func) {
 		let { graph } = this.props,
 			updatedGraph = GraphService.updateFunction(graph, i, func)
 
 		this.props.setState({ graph: updatedGraph })
+	}
+
+	removeFunction(i) {
+		let { graph, selected } = this.props,
+			updatedGraph = GraphService.removeFunction(graph, i)
+
+		selected -= 1
+		this.props.setState({ graph: updatedGraph, selected })
+	}
+
+	handleLegendClick(selected) {
+		this.props.setState({ selected })
 	}
 
 	render() {
@@ -46,6 +58,7 @@ export default class Graph extends React.Component {
 				<Properties
 					{ ...this.props }
 					updateFunction={ (i, func) => this.updateFunction(i, func) }
+					removeFunction={ i => this.removeFunction(i) }
 				/>
 				<Preview 
 					data={ this.props.graph }

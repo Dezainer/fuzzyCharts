@@ -5,30 +5,36 @@ import * as FunctionService from 'functionService'
 export default class Properties extends React.Component {
 
 	handleNameChange(func, name) {
-		let { selected } = this.props,
-			updatedFunc = FunctionService.updateName(func, name)
-
-		this.props.updateFunction(selected, updatedFunc)
+		updatedFunc = FunctionService.updateName(func, name)
+		this.props.updateFunction(this.props.selected, updatedFunc)
 	}
 
 	handlePointXChange(func, i, value) {
-		let { selected } = this.props,
-			updateFunc = FunctionService.updatePointX(func, i, value)
-
-		this.props.updateFunction(selected, updateFunc)
+		updatedFunc = FunctionService.updatePointX(func, i, value)
+		this.props.updateFunction(this.props.selected, updateFunc)
 	}
 
 	handlePointYChange(func, i, value) {
-		let { selected } = this.props,
-			updateFunc = FunctionService.updatePointY(func, i, value)
+		updatedFunc = FunctionService.updatePointY(func, i, value)
+		this.props.updateFunction(this.props.selected, updateFunc)
+	}
 
-		this.props.updateFunction(selected, updateFunc)
+	handleRemove() {
+		this.props.removeFunction(this.props.selected)
 	}
 
 	getProperties(func) {
 		return (
 			<div>
-				<h1 className="title">Propriedades</h1>
+				<div className="header">
+					<h1 className="title">Propriedades</h1>
+					<div 
+						className="delete-wrapper"
+						onClick={ () => this.handleRemove() }
+					>
+						<div className="delete"/>
+					</div>
+				</div>
 				<Input
 					name="label"
 					placeholder="Nome"

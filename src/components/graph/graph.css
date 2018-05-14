@@ -8,10 +8,51 @@
 	width: 32%;
 	height: 100%;
 }
+.properties .header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.properties .header .delete-wrapper {
+	padding: 12px;
+	cursor: pointer;
+}
+.properties .header .delete {
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border: 2px solid white;
+	border-radius: 50%;
+	padding: 10px;
+	transition: all 0.2s ease-in-out;
+}
+.properties .header .delete-wrapper:hover .delete {
+	transform: rotate(90deg);
+}
+
+.properties .header .delete::before,
+.properties .header .delete::after {
+	content: '';
+	width: 40%;
+	height: 2px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: white;
+	transition: all 0.2s ease-in-out;
+}
+.properties .header .delete-wrapper:hover .delete::before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+.properties .header .delete-wrapper:hover .delete::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
 .properties .point {
 	display: flex;
 }
-.properties .label {
+.properties .point .label {
 	width: 100%;
 	text-align: left;
 	margin-top: 10px;
