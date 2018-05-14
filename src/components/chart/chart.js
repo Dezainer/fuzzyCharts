@@ -8,11 +8,11 @@ export default class Chart extends React.Component {
 
 	componentDidMount() {
 		this.setupCanvas()
-		this.updateData(this.props)
+		this.createChart(this.props)
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.updateData(nextProps)
+		this.updateChart(nextProps)
 	}
 
 	setupCanvas() {
@@ -24,8 +24,13 @@ export default class Chart extends React.Component {
 		ChartJs.defaults.global.legend.onClick = this.props.onClick
 	}
 
-	updateData(props) {
+	createChart(props) {
 		this.chart = new ChartJs(this.ctx, makeChart(props.data))
+	}
+
+	updateChart(props) {
+		this.chart.data = makeChart(props.data).data
+		this.chart.update()
 	}
 
 	render() {
