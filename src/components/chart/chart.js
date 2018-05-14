@@ -7,12 +7,25 @@ import makeChart from 'chartFactory'
 export default class Chart extends React.Component {
 
 	componentDidMount() {
-		let ctx = this.canvas.getContext('2d'), chart
+		this.setupCanvas()
+		this.updateData(this.props)
+	}
 
-		ctx.canvas.width = this.block.innerWidth
-		ctx.canvas.height = this.block.innerHeight
+	componentWillReceiveProps(nextProps) {
+		this.updateData(nextProps)
+	}
 
-		chart = new ChartJs(ctx, makeChart(this.props.data))
+	setupCanvas() {
+		this.ctx = this.canvas.getContext('2d')
+
+		this.ctx.canvas.width = this.block.innerWidth
+		this.ctx.canvas.height = this.block.innerHeight
+
+		ChartJs.defaults.global.legend.onClick = this.props.onClick
+	}
+
+	updateData(props) {
+		this.chart = new ChartJs(this.ctx, makeChart(props.data))
 	}
 
 	render() {

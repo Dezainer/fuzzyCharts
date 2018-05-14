@@ -20,6 +20,11 @@
 .wrapper {
 	padding: 15px;
 }
+.centered {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
 .title {
 	font-size: 1.2em;
@@ -28,4 +33,5 @@
 .label {
 	font-size: 1em;
 	color: rgba(255,255,255,0.2);
+	text-align: center;
 }
